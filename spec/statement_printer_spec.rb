@@ -1,10 +1,12 @@
 require 'statement_printer'
 describe Statement do
   it 'will print statement with the dates, and types of transactions' do
-    date = "2018-05-20"
-    account = double(:account, history: [{ amount: 1000, date: "#{date}", type: :credit, balance: 1000 }, { amount: 500, date: "#{date}", type: :debit, balance: 500 }])
+    date = "20/05/2018"
+    transaction_1 = double(:transaction_1, date: date, credit: 1000, debit: nil, balance: 1000)
+    transaction_2 = double(:transaction_1, date: date, credit: nil, debit: 500, balance: 1000)
+    transactions = [transaction_1, transaction_2]
+    account = double(:account, history: transactions)
     Statement.print(account)
-    expect { print("Type: credit, amount: £1000 at 2018-05-23, balance £1000.0
-      Type: debit, amount: £500 at 2018-05-23, balance £500.0") }.to output.to_stdout
+    expect { print("Your mama") }.to output.to_stdout
   end
 end

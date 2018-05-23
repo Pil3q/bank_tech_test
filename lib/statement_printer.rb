@@ -1,8 +1,8 @@
-require_relative 'account'
 class Statement
   def self.print(account)
+    p 'date || credit || debit || balance'
     account.history.each do |transaction|
-      puts "Type: #{transaction[:type]}, amount: £#{transaction[:amount]} at #{transaction[:date]}, balance £#{transaction[:balance]}"
+      p "#{transaction.date} || #{transaction.credit} || #{transaction.debit} || #{transaction.balance}"
     end
   end
 end

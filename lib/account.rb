@@ -1,22 +1,22 @@
 class Account
   attr_reader :balance, :history
   def initialize
-    @balance = 0.00
+    @balance = 0
     @history = []
   end
 
   def pay_in(amount, date = current_date)
     @balance += amount
-    @history << { amount: amount, date: date, type: :credit, balance: balance }
+    @history << Transaction.new(date, amount, nil, balance)
   end
 
   def withdraw(amount, date = current_date)
     raise 'You are broke, maybe a loan?' if amount > balance
     @balance -= amount
-    @history << { amount: amount, date: date, type: :debit, balance: balance }
+    @history << Transaction.new(date, nil, amount, balance)
   end
 
   def current_date
-    Time.new.strftime('%Y-%m-%d')
+    Time.new.strftime('%d/%m/%Y')
   end
 end
