@@ -3,4 +3,8 @@ class Account
   def initialize
     @balance = 0
   end
+
+  def pay_in(amount)
+    @balance += amount
+  end
 end
