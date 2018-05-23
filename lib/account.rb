@@ -6,19 +6,19 @@ class Account
   end
 
   def pay_in(amount)
-    date = Time.new.strftime("%Y-%m-%d")
+    date = Time.new.strftime('%Y-%m-%d')
     @balance += amount
-    @history << { :amount => amount, :date => date, :type => :credit, :balance => @balance }
+    @history << { amount: amount, date: date, type: :credit, balance: @balance }
   end
 
   def withdraw(amount)
-    raise "You are broken, maybe a loan?" if amount > @balance
-    date = Time.new.strftime("%Y-%m-%d")
+    raise 'You are broke, maybe a loan?' if amount > @balance
+    date = Time.new.strftime('%Y-%m-%d')
     @balance -= amount
-    @history << { :amount => amount, :date => date, :type => :debit, :balance => @balance }
+    @history << { amount: amount, date: date, type: :debit, balance: @balance }
   end
 
   def print_statement
-    @history.each { |transaction| puts "Type: #{transaction[:type]}, amount: £#{transaction[:amount]} at #{transaction[:date]}, balance £#{transaction[:balance]}"}
+    @history.each { |transaction| puts "Type: #{transaction[:type]}, amount: £#{transaction[:amount]} at #{transaction[:date]}, balance £#{transaction[:balance]}" }
   end
 end
