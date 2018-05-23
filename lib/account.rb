@@ -7,4 +7,8 @@ class Account
   def pay_in(amount)
     @balance += amount
   end
+
+  def withdraw(amount)
+    @balance -= amount
+  end
 end
