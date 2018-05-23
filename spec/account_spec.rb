@@ -1,29 +1,34 @@
 require 'account'
-require 'transaction'
 describe Account do
-  it 'shows the balance' do
-    expect(subject.balance).to eq 0
+  let(:transaction) { double(:transaction) }
+  let(:date) { double(:date, self: "2018-05-20")}
+  before(:each) do
+    allow(transaction).to receive(:new)
+    @account = Account.new(transaction)
   end
-  it 'will allow client to pay in' do
-    subject.pay_in(1000)
-    expect(subject.balance).to eq 1000
+  it 'shows the 0 balance once created' do
+    expect(@account.balance).to eq 0
   end
-  it 'will allow client to withdraw' do
-    subject.pay_in(1000)
-    subject.withdraw(500)
-    expect(subject.balance).to eq 500
+  it 'transaction is saved with the right arguments when paying in' do
+    expect(transaction).to receive(:new).with(date, 1000, nil, 1000)
+    @account.pay_in(1000, date)
   end
-  it 'will has transaction history with the dates, types and balance' do
-    date = "2018-05-20"
-    subject.pay_in(1000, date)
-    subject.withdraw(500, date)
-    expect(subject.history[0].date).to be date
-    expect(subject.history[0].credit).to eq 1000.0
-    expect(subject.history[0].debit).to be nil
-    expect(subject.history[0].balance).to eq 1000.0
-    expect(subject.history[1].debit).to eq 500.0
+  it 'change the balance when paying in' do
+    expect(@account.pay_in(1000, date)).to eq 1000
+  end
+  it 'transaction is saved with the right arguments when withdrawing' do
+    @account.pay_in(1000, date)
+    expect(transaction).to receive(:new).with(date, nil, 500, 500)
+    @account.withdraw(500, date)
+  end
+  it 'change the balance when withdrawing' do
+    @account.pay_in(1000, date)
+    expect(@account.withdraw(500, date)).to eq 500
+  end
+  it 'adds transaction to the history' do
+    expect { @account.pay_in(1000, date) }.to change { @account.history.length }.by(1)
   end
   it 'throws an error while trying to withdraw from empty account' do
-    expect { subject.withdraw(500) }.to raise_error 'You are broke, maybe a loan?'
+    expect { @account.withdraw(500) }.to raise_error 'You are broke, maybe a loan?'
   end
 end
