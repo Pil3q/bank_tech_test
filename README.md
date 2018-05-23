@@ -7,6 +7,7 @@ bundle install
 cd /project_path
 irb or pry
 require './lib/account.rb'
+require './lib/statement_printer.rb'
 ```
 You are ready to go.
 
@@ -46,7 +47,7 @@ RuntimeError (You are broke, maybe a loan?)
 ```
 You can also print the statement
 ```ruby
-my_account.print_statement
+Statement.print(my_account)
 Type: credit, amount: £500 at 2018-05-23, balance £500
 Type: debit, amount: £300 at 2018-05-23, balance £200
  => [{:amount=>500, :date=>"2018-05-23", :type=>:credit, :balance=>500}, {:amount=>300, :date=>"2018-05-23", :type=>:debit, :balance=>200}]
