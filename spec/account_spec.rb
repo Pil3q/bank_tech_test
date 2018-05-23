@@ -13,9 +13,9 @@ describe Account do
     expect(subject.balance).to eq 500
   end
   it 'will print statement with the dates, and types of transactions' do
-    date = Time.new.strftime('%Y-%m-%d')
-    subject.pay_in(1000)
-    subject.withdraw(500)
+    date = "2018-05-20"
+    subject.pay_in(1000, date)
+    subject.withdraw(500, date)
     expect(subject.print_statement).to include({ amount: 1000, date: "#{date}", type: :credit, balance: 1000 }, { amount: 500, date: "#{date}", type: :debit, balance: 500 })
   end
   it 'throws an error while trying to withdraw from empty account' do
