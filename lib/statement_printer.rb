@@ -1,7 +1,7 @@
 class Statement
   def self.print(account)
-    to_print =  ['date || credit || debit || balance']
-    account.history.each do |transaction|
+    to_print = ['date || credit || debit || balance']
+    account.history.transactions.each do |transaction|
       if transaction.credit == nil
         row = "#{transaction.date} || #{transaction.credit} || #{"%5.2f" % transaction.debit} || #{"%5.2f" % transaction.balance}"
       else

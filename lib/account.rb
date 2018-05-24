@@ -1,3 +1,6 @@
+require_relative 'history'
+require_relative 'statement_printer'
+require_relative 'transaction'
 class Account
   attr_reader :balance, :history
   def initialize(transaction = Transaction, history = History.new)

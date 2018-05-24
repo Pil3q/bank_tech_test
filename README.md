@@ -1,13 +1,12 @@
-### Simple banking app
+# Simple banking app
 
 ## How to set it up?
 Clone this repo and run
 ```
-bundle install
 cd /project_path
-irb or pry
+bundle install
+run irb pry or any REPL
 require './lib/account.rb'
-require './lib/statement_printer.rb'
 ```
 You are ready to go.
 
@@ -19,12 +18,12 @@ Firstly create an account
 ```ruby
 my_account = Account.new
 ```
-Then put some money on it :)
+Then put some money on it, and you will see the current balance.
 ```ruby
 my_account.pay_in(500)
- => [{:amount=>500, :date=>"2018-05-23", :type=>:credit, :balance=>500}]
+ => 500
 ```
-If you check the balance now you will see them:)
+If you you need You can always check the balance by calling
 ```ruby
 my_account.balance
  => 500
@@ -32,8 +31,6 @@ my_account.balance
 You can withdraw them as well
 ```ruby
 my_account.withdraw(300)
- => [{:amount=>500, :date=>"2018-05-23", :type=>:credit, :balance=>500}, {:amount=>300, :date=>"2018-05-23", :type=>:debit, :balance=>200}]
-my_account.balance
  => 200
  ```
  Remember - you do not have overdraft!
@@ -48,10 +45,11 @@ RuntimeError (You are broke, maybe a loan?)
 You can also print the statement
 ```ruby
 Statement.print(my_account)
-Type: credit, amount: £500 at 2018-05-23, balance £500
-Type: debit, amount: £300 at 2018-05-23, balance £200
- => [{:amount=>500, :date=>"2018-05-23", :type=>:credit, :balance=>500}, {:amount=>300, :date=>"2018-05-23", :type=>:debit, :balance=>200}]
+date || credit || debit || balance
+24/05/2018 ||  || 300.00 || 200.00
+24/05/2018 || 500.00 ||  || 500.00
+=> nil
  ```
 
  ## Credits
- This app was created by genius software developer Patryk Pilecki. Do not hesitate to contact him via ppilecki@icloud.com
+If you have some feedback do not hesitate to contact me at ppilecki@icloud.com. If you like my outstanding work and have a juicy job offer I may think of it so do not hesitate too. It might be your lucky email:)
