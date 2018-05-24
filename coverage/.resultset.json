@@ -52,12 +52,16 @@
         1,
         1,
         1,
+        1,
+        1,
+        1,
         7,
         7,
         7,
         null,
         null,
         1,
+        5,
         5,
         5,
         null,
@@ -74,17 +78,15 @@
         null,
         null
       ],
-      "/Users/patryk/Projects/bank_tech_test/spec/statement_printer_spec.rb": [
+      "/Users/patryk/Projects/bank_tech_test/lib/history.rb": [
         1,
         1,
         1,
-        2,
-        2,
-        2,
-        2,
+        1,
+        null,
         null,
         1,
-        2,
+        1,
         null,
         null
       ],
@@ -103,8 +105,45 @@
         1,
         null,
         null
+      ],
+      "/Users/patryk/Projects/bank_tech_test/lib/transaction.rb": [
+        1,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null
+      ],
+      "/Users/patryk/Projects/bank_tech_test/spec/history_spec.rb": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/patryk/Projects/bank_tech_test/spec/statement_printer_spec.rb": [
+        1,
+        1,
+        1,
+        2,
+        2,
+        2,
+        2,
+        null,
+        1,
+        2,
+        null,
+        null
       ]
     },
-    "timestamp": 1527167850
+    "timestamp": 1527189307
   }
 }
